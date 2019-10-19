@@ -11,7 +11,8 @@ module Operations::Advisories
       init_vars
 
       update_local_store.bind do
-        all_advisories = raw_advisories.lazy.map { |ra| parse(ra) }
+        all_advisories =
+          raw_advisories.lazy.map { |ra| RubysecAdapter.read_file(ra) }
         sync_advisories(all_advisories)
       end
     end
@@ -50,12 +51,6 @@ module Operations::Advisories
       end
 
       Success(new_advisories)
-    end
-
-    def parse(ymlfile)
-      hsh = YAML.load_file(ymlfile)
-      everything = { 'filepath' => ymlfile }.merge(hsh)
-      RubysecAdapter.new(everything)
     end
   end
 end
