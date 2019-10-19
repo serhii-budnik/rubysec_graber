@@ -1,0 +1,5 @@
+<% @advisories.each do |advisory| %>
+  <p>
+  <%= advisory.gem %> / <%= link_to advisory.title, advisory.url %>
+  </p>
+<% end %>
