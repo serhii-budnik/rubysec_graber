@@ -66,3 +66,5 @@ gem 'sidekiq-failures'
 
 # dry-rb ruby libraries
 gem 'dry-transaction'
+
+gem 'telegram-bot'
