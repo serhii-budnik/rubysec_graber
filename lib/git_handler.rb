@@ -4,6 +4,17 @@ require 'fileutils'
 require 'open3'
 
 class GitHandler
+  class Error < StandardError
+    attr_reader :thing
+
+    def initialize(output)
+      msg = caller_locations((1..1)).first.path +
+            " - something went wrong processing: #{output}"
+
+      super(msg)
+    end
+  end
+
   attr_reader :repo_url, :local_path
 
   def initialize(url, path)
@@ -22,7 +33,6 @@ class GitHandler
 
     return if process.success?
 
-    raise caller_locations((1..1)).first.path +
-          " - something went wrong processing: #{output}"
+    raise Error, output
   end
 end
