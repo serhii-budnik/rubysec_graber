@@ -7,7 +7,7 @@ module Operations::Advisories
     REPO_URL = 'https://github.com/rubysec/ruby-advisory-db.git'
     REPO_PATH = 'tmp/importers/rubysec'
 
-    def call
+    def call(_input)
       init_vars
 
       update_local_store.bind do
