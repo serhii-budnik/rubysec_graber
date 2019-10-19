@@ -1,0 +1,8 @@
+p<div>
+  <%= @advisories.size %>
+  <% @advisories.each do |advisory| %>
+    <p>
+      <%= link_to "#{advisory.gem} / #{advisory.title}", advisory.url %>
+    <p>
+  <% end %>
+<div>
