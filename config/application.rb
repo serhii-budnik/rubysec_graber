@@ -2,7 +2,9 @@ require_relative 'boot'
 
 require 'rails/all'
 
+require 'sidekiq-scheduler'
 require 'sidekiq/web'
+require 'sidekiq-scheduler/web'
 
 require 'dry/container'
 require 'dry/transaction'

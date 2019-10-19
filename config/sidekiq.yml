@@ -1,4 +1,12 @@
-:concurrency: 1
+:concurrency: 2
 :queues:
   - default
   - mailers
+  - low
+
+:schedule:
+  import_advisories_from_rubysec_db:
+    every: '1m'
+    class: Advisories::ImportWorker
+    queue: low
+    description: 'Import new advisories from rubysec-database'
