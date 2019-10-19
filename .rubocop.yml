@@ -1,3 +1,7 @@
 AllCops:
   Exclude:
     - 'db/**/*'
+
+# conflicts with the reek gem
+Naming/RescuedExceptionsVariableName:
+  Enabled: false
