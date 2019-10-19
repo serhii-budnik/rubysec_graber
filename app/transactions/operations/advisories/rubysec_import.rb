@@ -47,7 +47,7 @@ module Operations::Advisories
         advisory =
           advisories_sync.call(advisory_adapter: advisory_adapter).success
 
-        @new_advisories.push(advisory) if advisory
+        new_advisories.push(advisory) if advisory
       end
 
       Success(new_advisories)
