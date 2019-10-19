@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => '/sidekiq'
 
   root to: 'home#index'
+
+  resources :advisories, only: :index
 end
