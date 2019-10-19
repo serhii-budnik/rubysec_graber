@@ -13,16 +13,21 @@
 ActiveRecord::Schema.define(version: 2019_10_15_222845) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "hstore"
   enable_extension "plpgsql"
 
   create_table "advisories", force: :cascade do |t|
     t.string "identifier"
     t.string "gem"
     t.string "cve"
+    t.string "osvdb"
+    t.string "cvss_v2"
+    t.string "cvss_v3"
     t.string "url"
     t.string "title"
     t.date "date"
     t.text "description"
+    t.hstore "related", default: {}
     t.text "unaffected_versions", default: [], array: true
     t.text "patched_versions", default: [], array: true
     t.datetime "created_at", precision: 6, null: false
