@@ -55,7 +55,9 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'faraday'
-# gem 'nokogiri'
+
+gem 'sidekiq'
+gem 'sidekiq-failures'
 
 # dry-rb ruby libraries
 gem 'dry-transaction'
