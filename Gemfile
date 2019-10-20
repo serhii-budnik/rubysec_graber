@@ -64,6 +64,7 @@ group :test do
 
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem 'webmock'
 end
 
 gem 'bootstrap', '~> 4.3.1'

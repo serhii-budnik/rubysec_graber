@@ -31,7 +31,7 @@ class GitHandler
         Open3.capture2e("git clone #{repo_url} #{local_path}")
       end
 
-    return if process.success?
+    return output if process.success?
 
     raise Error, output
   end
