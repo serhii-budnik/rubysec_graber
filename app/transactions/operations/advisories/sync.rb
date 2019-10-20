@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Operations::Advisories
+  # Synchronize a record. Create if does not exist or update an existing one
   class Sync
     include Dry::Transaction::Operation
 
