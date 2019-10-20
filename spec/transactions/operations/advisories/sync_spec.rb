@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe Operations::Advisories::Sync do
+describe Operations::Advisories::Sync, '#call' do
   before(:all) do
     path_to_yml = 'spec/fixtures/files/gems/activerecord/CVE-2016-6317.yml'
     yaml_hash = YAML.load_file(path_to_yml).symbolize_keys
