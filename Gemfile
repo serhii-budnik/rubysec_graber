@@ -50,13 +50,15 @@ group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
 
+  gem 'factory_bot_rails'
   gem 'faker'
   gem 'selenium-webdriver'
-  # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers'
 
   gem 'simplecov', require: false
   gem 'shoulda-matchers'
+
+  # Easy installation and use of web drivers to run system tests with browsers
+  gem 'webdrivers'
 end
 
 gem 'bootstrap', '~> 4.3.1'
