@@ -16,7 +16,7 @@ module Operations::Advisories
 
     def init_attributes(input)
       @advisory_adapter = input[:advisory_adapter]
-      @advisory_hash_adapter = advisory_adapter.to_h
+      @advisory_hash_adapter = advisory_adapter.to_fhash
     end
 
     def current_advisory
