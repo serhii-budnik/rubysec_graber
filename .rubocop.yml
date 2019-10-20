@@ -5,3 +5,6 @@ AllCops:
 # conflicts with the reek gem
 Naming/RescuedExceptionsVariableName:
   Enabled: false
+
+Style/Documentation:
+  Enabled: false
