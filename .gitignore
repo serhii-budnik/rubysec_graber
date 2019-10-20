@@ -37,3 +37,8 @@ yarn-debug.log*
 
 # Ignore SimpleCov gem
 /coverage/*
+
+# env vars
+.env
+.env.development
+.env.test
