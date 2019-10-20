@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
-class RubysecAdapter < AdvisoryAdapter.new(:filepath, :gem, :cve,
-                                           :osvdb, :url, :title,
-                                           :date, :description, :cvss_v2,
-                                           :cvss_v3, :patched_versions,
-                                           :unaffected_versions, :related,
+class RubysecAdapter < AdvisoryAdapter.new(*AdvisoryAdapter::MEMBERS,
                                            keyword_init: true)
 
   def self.read_file(file_path, parser = Parsers::YamlAdapter)
@@ -17,7 +13,7 @@ class RubysecAdapter < AdvisoryAdapter.new(:filepath, :gem, :cve,
     filepath.split('/')[-2..-1].join('-').gsub('.yml', '')
   end
 
-  def to_h
-    super.merge(identifier: identifier).except(:filepath).stringify_keys
+  def to_fhash
+    to_h.merge(identifier: identifier).except(:filepath)
   end
 end
