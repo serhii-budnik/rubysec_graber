@@ -13,22 +13,24 @@ describe Operations::Advisories::Sync, '#call' do
     described_class.new.call(advisory_adapter: @advisory_adapter)
   end
 
-  # TODO: refactor with shared_example
-
-  context 'when a record does not exist' do
-    it 'should create a new record and return object' do
-      expect(Advisory.count).to be_zero
+  shared_examples 'a synchronized record' do |advisories_before_invocation|
+    it 'should sync one and return object' do
+      expect(Advisory.count).to eq(advisories_before_invocation)
 
       outcome = subject
-      advisory = outcome.success
+      adv = outcome.success
 
       expect(outcome).to be_success
-      expect(advisory).to be_an(Advisory)
-      expect(advisory.attributes.slice(AdvisoryAdapter::MEMBERS)).to include(
+      expect(adv).to be_an(Advisory)
+      expect(adv.attributes.slice(AdvisoryAdapter::MEMBERS)).to include(
         @advisory_adapter.to_h.slice(AdvisoryAdapter::MEMBERS)
       )
       expect(Advisory.count).to eq(1)
     end
+  end
+
+  context 'when a record does not exist' do
+    it_should_behave_like 'a synchronized record', 0
   end
 
   context 'when a record changed' do
@@ -36,21 +38,7 @@ describe Operations::Advisories::Sync, '#call' do
       create(:advisory, identifier: @advisory_adapter.identifier)
     end
 
-    it 'should update an existing one and return object' do
-      expect(Advisory.count).to eq(1)
-      expect(advisory.attributes.slice(AdvisoryAdapter::MEMBERS)).not_to include(
-        @advisory_adapter.to_h.slice(AdvisoryAdapter::MEMBERS)
-      )
-
-      outcome = subject
-
-      expect(outcome).to be_success
-      expect(advisory).to be_an(Advisory)
-      expect(advisory.attributes.slice(AdvisoryAdapter::MEMBERS)).to include(
-        @advisory_adapter.to_h.slice(AdvisoryAdapter::MEMBERS)
-      )
-      expect(Advisory.count).to eq(1)
-    end
+    it_should_behave_like 'a synchronized record', 1
   end
 
   context 'when a record has not changed' do
