@@ -25,6 +25,7 @@ module Operations::Advisories
         Advisory.find_by(identifier: advisory_adapter.identifier)
     end
 
+    # TODO: add create and validate operations for advisories
     def process_advisories
       if current_advisory
         current_advisory.assign_attributes(advisory_hash_adapter)
