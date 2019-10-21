@@ -6,7 +6,7 @@
 
 :schedule:
   import_advisories_from_rubysec_db:
-    every: '1m'
+    every: '10m'
     class: Advisories::ImportWorker
     queue: low
     description: 'Import new advisories from rubysec-database'
