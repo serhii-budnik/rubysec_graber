@@ -4,6 +4,7 @@ require 'rails_helper'
 
 describe Operations::Users::NewAdvisoriesNotification, '#call' do
   let(:advisory) { create(:advisory) }
+  let!(:user) { create(:user, created_at: Time.current) }
 
   context 'when going to notify users about an advisory' do
     it 'should send email' do
@@ -20,7 +21,8 @@ describe Operations::Users::NewAdvisoriesNotification, '#call' do
 
         email = ActionMailer::Base.deliveries.first
 
-        expect(email.to).to eq(['serhii.budnik@gmail.com'])
+        expect(ActionMailer::Base.deliveries.count).to eq(1)
+        expect(email.to).to be_nil
         expect(email.body).to include(
           "<a href=\"#{advisory.url}\">#{advisory.gem} / #{advisory.title}</a>"
         )

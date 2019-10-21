@@ -20,7 +20,11 @@ module Operations::Users
     attr_reader :advisories
 
     def notify_users_via_emails
-      AdvisoryMailer.new_advisories(advisories.map(&:id)).deliver_later
+      User.confirmed.pluck(:email).each_slice(100).to_a.each do |emails|
+        AdvisoryMailer.new_advisories(
+          advisories.map(&:id), emails
+        ).deliver_later
+      end
     end
 
     def notify_users_via_telegram

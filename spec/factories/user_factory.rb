@@ -5,5 +5,7 @@ FactoryBot.define do
     email
     password { '12345678' }
     password_confirmation { password }
+
+    before(:create, &:skip_confirmation!)
   end
 end
