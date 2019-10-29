@@ -1,3 +1,4 @@
+# typed: false
 class CreateAdvisories < ActiveRecord::Migration[6.0]
   def change
     create_table :advisories do |t|

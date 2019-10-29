@@ -1,3 +1,4 @@
+# typed: strong
 # frozen_string_literal: true
 
 TELEGRAM_CHAT_ID = -1_001_301_260_856
