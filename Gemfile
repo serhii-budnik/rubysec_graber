@@ -86,3 +86,7 @@ gem 'sidekiq-failures'
 gem 'dry-transaction'
 
 gem 'telegram-bot'
+
+# https://sorbet.org/docs/adopting
+gem 'sorbet', group: :development
+gem 'sorbet-runtime'
