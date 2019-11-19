@@ -90,3 +90,5 @@ gem 'telegram-bot'
 # https://sorbet.org/docs/adopting
 gem 'sorbet', group: :development
 gem 'sorbet-runtime'
+
+gem 'loofah', '>= 2.3.1'
